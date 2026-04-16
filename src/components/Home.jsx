@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Form from "./Form"; // adjust import path as needed
 
 // ── IMAGE PLACEHOLDERS ──────────────────────────────────────────────────────
-const HERO_BG = "public/assets/banner.webp";
+const HERO_BG = "public/src/assets/banner.webp";
 const CAMPUS_IMG = "/src/assets/uni2.webp";
 const STUDENT_LEFT = "/src/assets/uni1.webp";
 const STUDENT_RIGHT = "/src/assets/uni3.webp";

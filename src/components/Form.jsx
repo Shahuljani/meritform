@@ -1326,7 +1326,7 @@ export default function Form({ isOpen, onClose }) {
       {/* ── MOBILE STATIC (always rendered below hero on mobile) ── */}
       <div className="tau-form-mobile-static">
         <div className="tau-form-header">
-          <h2>Admission 2026</h2>
+          <h2>Merit Based Admission 2026</h2>
         </div>
         <form onSubmit={handleSubmit}>
           {formFields}

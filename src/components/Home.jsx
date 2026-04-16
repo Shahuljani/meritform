@@ -17,7 +17,7 @@ const LEICESTER_IMG = "/images/leicester.jpg";
 const LOGO_IMG = "/src/assets/logo.png";
 
 const recruiters = [
-  { name: "Datawise", img: "src/assets/gh2.webp" },
+  { name: "Datawise", img: "/src/assets/gh2.webp" },
   { name: "Accenture", img: "src/assets/gh3.webp" },
   { name: "NASSCOM", img: "src/assets/gh4.webp" },
   { name: "Salesforce", img: "src/assets/gh5.webp" },

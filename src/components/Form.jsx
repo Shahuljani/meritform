@@ -1314,7 +1314,7 @@ export default function Form({ isOpen, onClose }) {
       <div className={`tau-form-overlay${isOpen ? "" : " tau-hidden"}`}>
         <div className="tau-form-popup">
           <div className="tau-form-header">
-            <h2>Merit Based Admission 2026</h2>
+            <h2>Merit Based Admissions 2026</h2>
             <button className="tau-close-btn" onClick={onClose}>✕</button>
           </div>
           <form onSubmit={handleSubmit}>
@@ -1326,7 +1326,7 @@ export default function Form({ isOpen, onClose }) {
       {/* ── MOBILE STATIC (always rendered below hero on mobile) ── */}
       <div className="tau-form-mobile-static">
         <div className="tau-form-header">
-          <h2>Merit Based Admission 2026</h2>
+          <h2>Merit Based Admissions 2026</h2>
         </div>
         <form onSubmit={handleSubmit}>
           {formFields}

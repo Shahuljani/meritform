@@ -236,7 +236,7 @@ export default function Home() {
           display: block;
         }
 
-        /* HERO */
+        /* HERO — DESKTOP */
         .hero {
           position: relative;
           min-height: 100vh;
@@ -253,6 +253,37 @@ export default function Home() {
           background-position: center right;
           opacity: 0.45;
         }
+
+/* Mobile girl image — visible only on mobile */
+.hero-girl-mobile {
+  display: none;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .hero-girl-mobile {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 170px;
+    width: 100%;
+    height: 100%;
+
+    /* KEY PART */
+    object-position: 50% center;    /* fills entire area */
+    object-position: right bottom; /* focus on girl */
+    
+    transform: scale(1.2); /* zoom effect */
+  }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    height: 60vh; /* adjust if needed */
+  }
+}
+
         .hero-content {
           position: relative; z-index: 2;
           padding: 120px 40px 60px;
@@ -274,7 +305,9 @@ export default function Home() {
           font-weight: 700;
           color: var(--white);
           background: rgba(255,255,255,0.08);
+          
         }
+          
         .hero-programs {
           background: var(--yellow);
           padding: 16px 40px;
@@ -859,44 +892,82 @@ export default function Home() {
 
         /* ── MOBILE (≤ 600px) ── */
         @media (max-width: 600px) {
-          /* ── HERO MOBILE ── */
+
+          /* ── HERO MOBILE — split layout ── */
           .hero {
             min-height: auto;
-            background: #0f1d1d;
+            background: linear-gradient(160deg, #0b1e1e 0%, #0f2d2d 55%, #0d3838 100%);
+            display: flex;
+            flex-direction: column;
           }
 
-          /*
-           * On mobile we switch to a PORTRAIT crop of the banner.
-           * The image is placed at the bottom-right corner so the
-           * girl's face / body is visible above the stat bar.
-           * Adjust background-position-y if your image needs it.
-           */
+          /* Hide the desktop background image on mobile */
           .hero-bg {
-            background-size: 55%;
-            background-position: right -10px bottom 0px;
-            background-repeat: no-repeat;
-            opacity: 0.42;
+            display: none;
           }
 
-          /* Hero: pad below logo */
+          /* Top portion: text left + girl image right */
+          .hero-top-mobile {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            position: relative;
+            overflow: hidden;
+            min-height: 380px;
+          }
+
+          /* Text block on the left */
           .hero-content {
-            padding: 80px 20px 30px;
-            max-width: 100%;
+            padding: 76px 16px 24px 16px;
+            max-width: 55%;
+            flex-shrink: 0;
+            z-index: 2;
+            position: relative;
           }
           .hero-content h1 {
-            font-size: clamp(2rem, 8vw, 2.8rem);
+            font-size: clamp(1.75rem, 7vw, 2.4rem);
+            line-height: 1.1;
           }
           .hero-badge {
-            padding: 10px 22px;
-            font-size: 0.92rem;
-            margin-top: 18px;
+            padding: 8px 14px;
+            font-size: 0.78rem;
+            margin-top: 14px;
+            letter-spacing: 0.5px;
           }
+
+          /* Girl image — fills right side, full height */
+          .hero-girl-mobile {
+            display: block;
+            position: absolute;
+            right: 10px;
+            bottom: 0;
+            top: 0;
+            width: 50%;
+            object-fit: cover;
+            object-position: top center;
+            /* Fade left edge into dark background */
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.15) 18%, black 45%);
+            mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.15) 18%, black 45%);
+          }
+
+          /* Teal diagonal accent strip at bottom of hero-top */
+          .hero-top-mobile::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--teal);
+          }
+
+          /* Programs bar */
           .hero-programs {
-            padding: 12px 16px;
-            gap: 4px 10px;
+            padding: 10px 14px;
+            gap: 3px 8px;
           }
           .hero-programs span {
-            font-size: 0.76rem;
+            font-size: 0.72rem;
           }
 
           /* Stats: 2 columns */
@@ -904,11 +975,11 @@ export default function Home() {
             grid-template-columns: repeat(2, 1fr);
           }
           .stat-item {
-            padding: 16px 8px;
+            padding: 14px 8px;
           }
           .stat-item:nth-child(2) { border-right: none; }
-          .stat-num { font-size: 1.5rem; }
-          .stat-label { font-size: 0.72rem; }
+          .stat-num { font-size: 1.4rem; }
+          .stat-label { font-size: 0.7rem; }
 
           /* Schools */
           .school-tabs { gap: 4px; }
@@ -993,19 +1064,24 @@ export default function Home() {
             padding: 12px 16px;
           }
           .logo-overlay img {
-            height: 40px;
+            height: 38px;
           }
         }
 
         /* ── EXTRA SMALL (≤ 400px) ── */
         @media (max-width: 400px) {
-          .hero-bg {
-            background-size: 50%;
-            background-position: right 0px bottom 0px;
-            opacity: 0.35;
+          .hero-top-mobile {
+            min-height: 320px;
+          }
+          .hero-content {
+            max-width: 58%;
+            padding-top: 68px;
           }
           .hero-content h1 {
-            font-size: 1.85rem;
+            font-size: 1.6rem;
+          }
+          .hero-girl-mobile {
+            width: 48%;
           }
         }
       `}</style>
@@ -1020,6 +1096,7 @@ export default function Home() {
 
       {/* ── HERO ── */}
       <section className="hero">
+        {/* Desktop background — hidden on mobile via CSS */}
         <div className="hero-bg" />
 
         {/* Logo — top left, no header */}
@@ -1027,14 +1104,30 @@ export default function Home() {
           <img src={LOGO_IMG} alt="The Apollo University" />
         </div>
 
-        <div className="hero-content">
-          <h1>
-            Dream.<br />
-            <span>Believe.</span><br />
-            Achieve.
-          </h1>
-          <div className="hero-badge">Merit Admissions Open 2026</div>
+        {/*
+          Mobile layout wrapper:
+          On mobile (≤600px) this becomes a flex row with
+          text on the left and girl image on the right.
+          On desktop it's transparent — just a wrapper div.
+        */}
+        <div className="hero-top-mobile">
+          {/* Girl image — only visible on mobile */}
+          <img
+            src="src\assets\banner.webp"
+            alt="Apollo University Student"
+            className="hero-girl-mobile"
+          />
+
+          <div className="hero-content">
+            <h1>
+              Dream.<br />
+              <span>Believe.</span><br />
+              Achieve.
+            </h1>
+            <div className="hero-badge">Merit Based Admissions are Open 2026</div>
+          </div>
         </div>
+
         <div className="hero-programs">
           {["B.TECH.", "M.TECH.", "MBA", "B.Sc.", "M.Sc.", "BPT", "MPT", "MPH", "PG Diploma"].map((p, i, arr) => (
             <span key={p}>{p}{i < arr.length - 1 && <span className="sep">  |  </span>}</span>

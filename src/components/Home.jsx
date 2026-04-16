@@ -2,19 +2,19 @@ import React, { useState, useEffect, useRef } from "react";
 import Form from "./Form"; // adjust import path as needed
 
 // ── IMAGE PLACEHOLDERS ──────────────────────────────────────────────────────
-const HERO_BG = "src/assets/banner.webp";
-const CAMPUS_IMG = "src/assets/uni2.webp";
-const STUDENT_LEFT = "src/assets/uni1.webp";
-const STUDENT_RIGHT = "src/assets/uni3.webp";
-const SCHOOL_TECH = "src/assets/tech.webp";
-const SCHOOL_HEALTH = "src/assets/0Health_Sciences.png";
-const SCHOOL_MGMT = "src/assets/0Management.png";
-const SCHOOL_PHARMA = "src/assets/0Pharmaceutical_Sciences.png";
-const SCHOOL_SOCIAL = "src/assets/0Social_Work.png";
-const HOSTEL_IMG = "src/assets/Hostel.png";
-const SCHOLARSHIP_IMG = "src/assets/scholar.webp";
+const HERO_BG = "/src/assets/banner.webp";
+const CAMPUS_IMG = "/src/assets/uni2.webp";
+const STUDENT_LEFT = "/src/assets/uni1.webp";
+const STUDENT_RIGHT = "/src/assets/uni3.webp";
+const SCHOOL_TECH = "/src/assets/tech.webp";
+const SCHOOL_HEALTH = "/src/assets/0Health_Sciences.png";
+const SCHOOL_MGMT = "/src/assets/0Management.png";
+const SCHOOL_PHARMA = "/src/assets/0Pharmaceutical_Sciences.png";
+const SCHOOL_SOCIAL = "/src/assets/0Social_Work.png";
+const HOSTEL_IMG = "/src/assets/Hostel.png";
+const SCHOLARSHIP_IMG = "/src/assets/scholar.webp";
 const LEICESTER_IMG = "/images/leicester.jpg";
-const LOGO_IMG = "src/assets/logo.png";
+const LOGO_IMG = "/src/assets/logo.png";
 
 const recruiters = [
   { name: "Datawise", img: "src/assets/gh2.webp" },
